@@ -10,7 +10,11 @@ defmodule Tube.Run do
     # * registry stores all the process managers,
     # * process manager factory stores the data for now and dispatches to the correct process manager
     # * starting station will remain fixed now to make things easier
-    # * process manager starts on #exit and does the calculation
+    #
+    # Next steps:
+    # * multiple journeys on the same card
+    # * stopping/restarting processes
+    # * storing more complex data
 
     Enum.map(1..5, fn(card) ->
       spawn fn ->
