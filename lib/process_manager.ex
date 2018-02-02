@@ -29,12 +29,12 @@ defmodule Tube.ProcessManager do
 
   def handle_cast({:entry, station}, state) do
     IO.puts "Entry #{state}: #{station}"
-    {:noreply, station} # TODO: this should return new state
+    {:noreply, state} # TODO: this should return new state
   end
 
-  def handle_cast({:exit, station}, _state) do
+  def handle_cast({:exit, station}, state) do
     charge = Tube.FareCalculator.calculate(station)
     IO.puts "Charged #{charge} for journey to #{station}"
-    {:noreply, charge} # TODO: this should stop
+    {:noreply, state} # TODO: this should stop
   end
 end
