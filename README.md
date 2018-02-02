@@ -1,6 +1,6 @@
 # Tube
 
-**TODO: Add description**
+Tube charging system. Exploring processes in Elixir.
 
 ## Installation
 
@@ -15,7 +15,39 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/tube](https://hexdocs.pm/tube).
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) and published on [HexDocs](https://hexdocs.pm). Once published, the docs can be found at [https://hexdocs.pm/tube](https://hexdocs.pm/tube).
 
+## Notes
+
+### Compilation
+
+```sh
+mix compile
+mix escript.build
+```
+
+### Run tests
+
+```sh
+mix test
+```
+
+### Run code
+
+```sh
+./tube
+```
+
+### Run console
+
+```sh
+iex -S mix
+```
+
+
+
+### Questions
+
+* would I have a separate Registry for every "type" of stored thing?
+* do I pass that registry around?
+* when do I use `Agent` and when do I use `GenServer`?

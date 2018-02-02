@@ -4,15 +4,10 @@ defmodule Tube do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Tube.hello
-      :world
-
+  Register a station exit
   """
-  def hello do
-    :world
+  def exit(process_manager_factory, card, station) do
+    Tube.ProcessManager.exit(card, station)
+    #Tube.ProcessManagerFactory.start_process_manager(process_manager_factory, card, station)
   end
 end

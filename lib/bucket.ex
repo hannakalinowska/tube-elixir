@@ -25,7 +25,7 @@ defmodule Tube.Bucket do
   end
 
   def exit(bucket, id, station) do
-    entry_station = get(bucket, id)
-    Tube.Fare.calculate(entry_station, station)
+    _entry_station = get(bucket, id)
+    Tube.FareCalculator.calculate(station)
   end
 end
