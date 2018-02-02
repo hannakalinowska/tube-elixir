@@ -3,7 +3,7 @@ defmodule Tube.FareCalculator do
   Calulate the fare for the given stations
   """
   def calculate(_station) do
-    :timer.sleep(3000)
+    :timer.sleep(:rand.uniform(2_000) + 1_000)
     2.90
   end
 end

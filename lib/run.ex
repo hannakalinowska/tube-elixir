@@ -12,11 +12,15 @@ defmodule Tube.Run do
     # * starting station will remain fixed now to make things easier
     # * process manager starts on #exit and does the calculation
 
-    Enum.map(1..3, fn(card) ->
-      Tube.enter(process_manager_factory, card, 'Westminster')
-      Tube.exit(card, 'Camden Town')
+    Enum.map(1..5, fn(card) ->
+      spawn fn ->
+        :timer.sleep(:rand.uniform(4000))
+        Tube.enter(process_manager_factory, card, 'Westminster')
+        :timer.sleep(:rand.uniform(300))
+        Tube.exit(card, 'Camden Town')
+      end
     end)
 
-    :timer.sleep(5_000)
+    :timer.sleep(10_000)
   end
 end

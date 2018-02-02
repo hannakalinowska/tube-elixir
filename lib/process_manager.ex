@@ -34,6 +34,6 @@ defmodule Tube.ProcessManager do
   def handle_cast({:exit, station}, state) do
     charge = Tube.FareCalculator.calculate(station)
     IO.puts "Charged #{charge} for journey to #{station} (#{state})"
-    {:stop, :done, state}
+    {:noreply, state}
   end
 end
