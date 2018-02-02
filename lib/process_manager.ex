@@ -5,7 +5,6 @@ defmodule Tube.ProcessManager do
   Start a process manager
   """
   def start_link(card) do
-    # TODO: store the card?
     GenServer.start_link(__MODULE__, card)
   end
 
@@ -29,7 +28,7 @@ defmodule Tube.ProcessManager do
 
   def handle_cast({:entry, station}, state) do
     IO.puts "Entry #{state}: #{station}"
-    {:noreply, state} # TODO: this should return new state
+    {:noreply, state}
   end
 
   def handle_cast({:exit, station}, state) do
