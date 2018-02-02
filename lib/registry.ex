@@ -21,7 +21,7 @@ defmodule Tube.Registry do
   Ensures there is a bucket associated with the given `name` in `server`
   """
   def create(server, name) do
-    GenServer.cast(server, {:create, name})
+    GenServer.call(server, {:create, name})
   end
 
   ## Server Callbacks
@@ -34,12 +34,12 @@ defmodule Tube.Registry do
     {:reply, Map.fetch(names, name), names}
   end
 
-  def handle_cast({:create, name}, names) do
+  def handle_call({:create, name}, _from, names) do
     if Map.has_key?(names, name) do
       {:noreply, names}
     else
       {:ok, bucket} = Tube.Bucket.start_link([])
-      {:noreply, Map.put(names, name, bucket)}
+      {:reply, :ok, Map.put(names, name, bucket)}
     end
   end
 end

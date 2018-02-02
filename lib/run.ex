@@ -3,9 +3,8 @@ defmodule Tube.Run do
   Go!
   """
   def main(_args) do
-    {:ok, bucket} = Tube.Bucket.start_link([])
     {:ok, process_manager_factory} = Tube.ProcessManagerFactory.start_link
-    {:ok, registry} = Tube.Registry.start_link([name: Tube.Registry])
+    {:ok, _registry} = Tube.Registry.start_link([name: Tube.Registry])
 
     # Plan:
     # * registry stores all the process managers,
