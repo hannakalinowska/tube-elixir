@@ -11,17 +11,17 @@ defmodule Tube.Registry do
   end
 
   @doc """
-  Looks up the bucket pid for `name` stored in `server`
+  Looks up the process manager pid for `name` stored in `server`
   """
   def lookup(server, name) do
     GenServer.call(server, {:lookup, name})
   end
 
   @doc """
-  Ensures there is a bucket associated with the given `name` in `server`
+  Ensures there is a process manager associated with the given `name` in `server`
   """
-  def create(server, name) do
-    GenServer.call(server, {:create, name})
+  def create(server, name, card) do
+    GenServer.call(server, {:create, name, card})
   end
 
   ## Server Callbacks
@@ -34,12 +34,12 @@ defmodule Tube.Registry do
     {:reply, Map.fetch(names, name), names}
   end
 
-  def handle_call({:create, name}, _from, names) do
+  def handle_call({:create, name, card}, _from, names) do
     if Map.has_key?(names, name) do
       {:noreply, names}
     else
-      {:ok, bucket} = Tube.Bucket.start_link([])
-      {:reply, :ok, Map.put(names, name, bucket)}
+      {:ok, process_manager} = Tube.ProcessManager.start_link(card)
+      {:reply, process_manager, Map.put(names, name, process_manager)}
     end
   end
 end
