@@ -14,6 +14,8 @@ defmodule Tube.ProcessManagerFactory do
   """
   def start_process_manager(_process_manager_factory, card, station) do
     {:ok, process_manager} = Tube.ProcessManager.start_link(card)
-    Tube.ProcessManager.exit(process_manager, station)
+    Tube.Registry.create(Tube.Registry, "process_manager/#{card}")
+
+    Tube.ProcessManager.enter(process_manager, station)
   end
 end

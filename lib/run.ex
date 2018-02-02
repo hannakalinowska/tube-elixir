@@ -13,9 +13,9 @@ defmodule Tube.Run do
     # * starting station will remain fixed now to make things easier
     # * process manager starts on #exit and does the calculation
 
-    Enum.map(1..5, fn(card) ->
-      #Tube.Bucket.enter(bucket, card, 'Westminster')
-      Tube.exit(process_manager_factory, card, 'Camden Town')
+    Enum.map(1..2, fn(card) ->
+      Tube.enter(process_manager_factory, card, 'Westminster')
+      Tube.exit(card, 'Camden Town')
     end)
 
     :timer.sleep(10_000)
