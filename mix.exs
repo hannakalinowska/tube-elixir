@@ -6,6 +6,7 @@ defmodule Tube.MixProject do
       app: :tube,
       version: "0.1.0",
       elixir: "~> 1.6",
+      escript: [main_module: Tube.Run],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]

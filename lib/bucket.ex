@@ -23,4 +23,9 @@ defmodule Tube.Bucket do
     # &Map.put(&1, id, station)
     Agent.update(bucket, fn(bucket) -> Map.put(bucket, id, station) end)
   end
+
+  def exit(bucket, id, station) do
+    entry_station = get(bucket, id)
+    Tube.Fare.calculate(entry_station, station)
+  end
 end
