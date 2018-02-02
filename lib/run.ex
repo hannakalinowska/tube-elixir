@@ -17,5 +17,7 @@ defmodule Tube.Run do
       #Tube.Bucket.enter(bucket, card, 'Westminster')
       Tube.exit(process_manager_factory, card, 'Camden Town')
     end)
+
+    :timer.sleep(10_000)
   end
 end

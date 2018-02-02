@@ -12,7 +12,7 @@ defmodule Tube.ProcessManagerFactory do
   @doc """
   Starts a process manager for a journey
   """
-  def start_process_manager(card, station) do
+  def start_process_manager(_process_manager_factory, card, station) do
     {:ok, process_manager} = Tube.ProcessManager.start_link(card)
     Tube.ProcessManager.exit(process_manager, station)
   end

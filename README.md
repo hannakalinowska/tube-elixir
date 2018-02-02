@@ -51,3 +51,4 @@ iex -S mix
 * would I have a separate Registry for every "type" of stored thing?
 * do I pass that registry around?
 * when do I use `Agent` and when do I use `GenServer`?
+* are supervisors really necessary in the beginning?
